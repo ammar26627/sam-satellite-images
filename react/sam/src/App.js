@@ -70,7 +70,7 @@ const App = () => {
 
       if (tensor && modelScale && newPoints) {
         try {
-          await runModelOnUserInteraction(tensor, modelScale, setMaskImg);
+          await runModelOnUserInteraction();
         } catch (error) {
           console.error("Error running model on user interaction:", error);
         }
