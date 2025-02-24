@@ -1,4 +1,5 @@
 from flask import Flask, Blueprint
+from flask_cors import CORS
 import os, sys, torch, torchvision, threading
 from flask_app.routes import main_bp as bp
 
@@ -13,7 +14,7 @@ from segment_anything import sam_model_registry, SamPredictor
 
 def create_app():
     app = Flask(__name__)
-    print(torch.__version__, torchvision.__version__)
+    CORS(app, resources={r"*": {"origins": "*"}})
     SAM_CHECKPOINT = os.path.join(ASSETS_DIR, "sam_vit_h_4b8939.pth")
     MODEL_TYPE = "vit_h"
 
