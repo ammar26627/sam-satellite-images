@@ -14,7 +14,8 @@ from segment_anything import sam_model_registry, SamPredictor
 
 def create_app():
     app = Flask(__name__)
-    CORS(app, resources={r"*": {"origins": "*"}})
+    CORS(app, supports_credentials=True)
+    app.config['CORS_HEADERS'] = 'Content-Type'
     SAM_CHECKPOINT = os.path.join(ASSETS_DIR, "sam_vit_h_4b8939.pth")
     MODEL_TYPE = "vit_h"
 
